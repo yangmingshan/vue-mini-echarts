@@ -123,8 +123,13 @@ function initChart(canvas, width, height, dpr) {
   return chart;
 }
 
-defineComponent(() => {
-  const ec = ref({ onInit: initChart });
+defineComponent((_, context) => {
+  const ec = ref({ lazyLoad: true });
 
-  return { ec };
+  const init = () => {
+    const canvas = context.selectComponent('#mychart-dom-bar');
+    canvas.init(initChart);
+  };
+
+  return { ec, init };
 });
