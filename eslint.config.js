@@ -12,7 +12,9 @@ const config = [
     languageOptions: {
       globals: {
         ...globals.node,
-        wx: false,
+        wx: 'readonly',
+        getApp: 'readonly',
+        getCurrentPages: 'readonly',
       },
     },
     rules: {
